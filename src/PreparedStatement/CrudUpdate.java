@@ -1,9 +1,11 @@
 package PreparedStatement;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-public class CrudInsert {
-
+public class CrudUpdate {
     private static String url = "jdbc:mysql://127.0.0.1:3306/mydb";
     private static String username = "root";
     private static String password = "root";
@@ -18,29 +20,17 @@ public class CrudInsert {
 
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
-            String query = "INSERT INTO students1(name, age, marks) VALUES (?, ?, ?)";
+            String query = "UPDATE students1 SET name = ? WHERE id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-
-            preparedStatement.setString(1, "John");
-            preparedStatement.setInt(2, 30);
-            preparedStatement.setDouble(3, 84.7);
-            preparedStatement.executeUpdate();
-
-            preparedStatement.setString(1, "Raghav");
-            preparedStatement.setInt(2, 25);
-            preparedStatement.setDouble(3, 83);
-            preparedStatement.executeUpdate();
-
-            preparedStatement.setString(1, "Sachin");
-            preparedStatement.setInt(2, 31);
-            preparedStatement.setDouble(3, 59);
+            preparedStatement.setString(1,"Amit");
+            preparedStatement.setInt(2,1);
 
             int rowAffected = preparedStatement.executeUpdate(); // Same used for Inserting as well as Update
 
             if(rowAffected > 0){
-                System.out.println( "Data has been successfully inserted");
+                System.out.println( "Data has been successfully updated");
             } else {
-                System.out.println( "Data could not be inserted");
+                System.out.println( "Data could not be updated");
             }
 
         } catch (SQLException e) {
