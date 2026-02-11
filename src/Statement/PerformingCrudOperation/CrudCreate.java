@@ -1,8 +1,8 @@
-package Statement;
+package Statement.PerformingCrudOperation;
 
 import java.sql.*;
 
-public class CrudInsert {
+public class CrudCreate {
 
     private static String url = "jdbc:mysql://127.0.0.1:3306/mydb";
     private static String username = "root";
