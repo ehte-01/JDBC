@@ -54,12 +54,20 @@ public class TransactionDemo {
             connection.commit();
             System.out.println("Transaction Successful");
 
+            debitPreparedStatement.close();
+            creditPreparedStatement.close();
+            connection.close();
+            sc.close();
+
         } catch (SQLException e) {
 
                 try {
                     if (connection != null) {
                         connection.rollback(); // rollback an exception
                     }
+
+                    connection.close();
+
                 }catch (SQLException ex) {
                         System.out.println(ex.getMessage());
                 }
@@ -81,6 +89,9 @@ public class TransactionDemo {
 
                 return current_balance >= amount ;
             }
+
+            preparedStatement.close();
+            connection.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
