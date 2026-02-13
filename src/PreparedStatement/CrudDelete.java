@@ -22,10 +22,10 @@ public class CrudDelete {
             Connection connection = DriverManager.getConnection(url, username, password);
             String query = "DELETE FROM students1  WHERE id IN (?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, 9);
-            preparedStatement.setInt(2, 10);
-            preparedStatement.setInt(3, 11);
-            preparedStatement.setInt(4, 12);
+            preparedStatement.setInt(1, 13);
+            preparedStatement.setInt(2, 14);
+            preparedStatement.setInt(3, 15);
+            preparedStatement.setInt(4, 8);
 
             int rowAffected = preparedStatement.executeUpdate(); // Same used for Inserting as well as Update
 

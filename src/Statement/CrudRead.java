@@ -1,4 +1,4 @@
-package Statement.PerformingCrudOperation;
+package Statement;
 
 import java.sql.*;
 

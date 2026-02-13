@@ -1,8 +1,11 @@
-package Statement.PerformingCrudOperation;
+package Statement;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-public class CrudCreate {
+public class CrudDelete {
 
     private static String url = "jdbc:mysql://127.0.0.1:3306/mydb";
     private static String username = "root";
@@ -19,19 +22,19 @@ public class CrudCreate {
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
+            String query = "DELETE FROM Students WHERE id = 4";
 
-            String query = String.format("INSERT INTO Students (name, age, marks) VALUES ('%s', %d, %f)", "Rahul",23, 74.5);
+            int rowAffected = statement.executeUpdate(query); // Same used for Inserting as well as Update
 
-            int rowsAffected = statement.executeUpdate(query);
-
-            if (rowsAffected > 0) {
-              System.out.println( "Data has been successfully inserted");
+            if(rowAffected > 0){
+                System.out.println( "Data has been successfully deleted");
             } else {
-             System.out.println( "Data could not be inserted");
+                System.out.println( "Data could not be deleted");
             }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
     }
 }
