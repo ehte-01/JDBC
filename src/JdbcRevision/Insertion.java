@@ -1,3 +1,5 @@
+package JdbcRevision;
+
 import java.sql.*;
 
 public class Insertion {
@@ -6,7 +8,9 @@ public class Insertion {
         String username = "root";
         String password = "root";
         //String query = "INSERT INTO employees(id,name,job_title,salary) VALUES(4,'Raju','Full Stack Developer',87000)";
-        String query ="DELETE from employees where id=4;";
+        //String query ="DELETE from employees where id=4;";
+        String query = "UPDATE employees\n" + "SET job_title= 'Full stack Developer',salary=70000.0\n"+
+                "WHERE id=2;";
         String selectQuery = "SELECT * From employees";
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -26,10 +30,15 @@ public class Insertion {
 //            } else {
 //                System.out.println("Insertion failed!");
 //            }
+//            if (rowsaffected > 0) {
+//                System.out.println("Deletion Successfull" + rowsaffected + "row(s) affected");
+//            } else {
+//                System.out.println("Deletion failed!");
+//            }
             if (rowsaffected > 0) {
-                System.out.println("Deletion Successfull" + rowsaffected + "row(s) affected");
+                System.out.println("Update Successfull" + rowsaffected + "row(s) affected");
             } else {
-                System.out.println("Deletion failed!");
+                System.out.println("Update failed!");
             }
             ResultSet rs = stmt.executeQuery(selectQuery);
             while (rs.next()) {
